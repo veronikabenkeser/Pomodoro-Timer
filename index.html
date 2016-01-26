@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Niconne' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <div class="outer-container">
+        <div class="all-content">
+            <div class="title-class">
+                <h1>Pomodoro Timer</h1>
+            </div>
+            <div class="container">
+                <div class="level">
+                    <div class="level-button button-style" id="student">
+                        <p class="name">Student</p>
+                        <p>1-4 sets</p>
+                    </div>
+
+                    <div class="level-button button-style" id="graduate">
+                        <p class="name">Graduate</p>
+                        <p>5-8 sets</p>
+                    </div>
+
+                    <div class="level-button button-style" id="expert">
+                        <p class="name">Expert</p>
+                        <p>9-12 sets</p>
+                    </div>
+
+                    <div class="level-button button-style" id="jedi">
+                        <p class="name">Jedi</p>
+                        <p>13-16 sets</p>
+                    </div>
+                </div>
+
+                <div class="control-div">
+                    <div class="control-div-section">
+                        <div class="control-container" id="first-con">
+
+                            <div class="instr">
+                                <h4>NUMBER OF SETS<br><div id="details">| 4 SESSIONS = 1 SET |</div></h4>
+                            </div>
+
+                            <div id="num-sets">
+                                <button class=" minus button-style">-</button><span class="num">2</span>
+                                <button class="button-style plus">+</button>
+                            </div>
+                        </div>
+
+                        <div class="control-container">
+
+                            <div class="instr">
+                                <h4>LENGTH OF <br>SESSION</h4>
+                            </div>
+
+                            <div id="ses-length">
+                                <button class="minus button-style">-</button><span class="num">25</span>
+                                <button class="plus button-style">+</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="control-div-section">
+                        <svg class="timer" version="1.1" baseProfile="full" width="240" height="270" xmlns="http://www.w3.org/2000/svg">
+
+                            <circle id="circle" cx="50" cy="120" r="100" fill="none" stroke="url(#grad4-grey)" stroke-width="15" transform="rotate(-90,100,100)" style="filter:url(#dropshadow)" />
+
+                            <circle cx="50" cy="120" r="100" id="green-halo" fill="none" stroke-width="15" transform="rotate(-90,100,100)" style="filter:url(#dropshadow)" stroke-dasharray="0,20000" />
+
+                            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
+                            </linearGradient>
+                            <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:rgb(111,255,82);stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:rgb(30, 176, 59);stop-opacity:1" />
+                            </linearGradient>
+
+                            <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:rgb(0, 102, 255);stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:rgb(0, 66, 163);stop-opacity:1" />
+                            </linearGradient>
+
+                            <linearGradient id="grad4-grey" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:rgb(161, 161, 161);stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:rgb(251, 251, 251);stop-opacity:1" />
+                            </linearGradient>
+
+                            <linearGradient id="grad5-grey" x1="100%" y1="80%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:rgb(92, 92, 92);stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:rgb(230, 230, 230);stop-opacity:1" />
+                            </linearGradient>
+
+                            <linearGradient id="grad6" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:rgb(255, 0, 0);stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:rgb(230, 92, 0);stop-opacity:1" />
+                            </linearGradient>
+
+                            <linearGradient id="grad7-grey" x1="100%" y1="80%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:rgb(48, 48, 48); stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:rgb(235, 235, 235);stop-opacity:0.7" />
+                            </linearGradient>
+
+                            <filter id="dropshadow" height="120%">
+                                <feGaussianBlur in="SourceAlpha" stdDeviation="2" />
+                                <feOffset dx="2" dy="2" result="offsetblur" />
+                                <feMerge>
+                                    <feMergeNode/>
+                                    <feMergeNode in="SourceGraphic" />
+                                </feMerge>
+                            </filter>
+
+                            <text id="timer-text" fill="url(#grad7-grey)" stroke="#4A4A4A" x="120" y="165" text-anchor="start" style="font-size: 36px; stroke-width: 1.3; letter-spacing:1.7">
+
+                                <tspan x="65" id="minute-pic1" text-anchor="middle"></tspan>
+                                <tspan x="96" id="minute-pic2" text-anchor="middle"></tspan>
+                                <tspan x="118" id="sym" style="font-size: 40px;"></tspan>
+                                <tspan x="120" id="words" text-anchor="middle"></tspan>
+                                <tspan text-anchor="middle" x="160" id="second-pic1"></tspan>
+                                <tspan text-anchor="middle" x="185" id="second-pic2"></tspan>
+
+                            </text>
+
+                        </svg>
+                    </div>
+                    <div class="control-div-section">
+                        <div class="control-container" id="third-con">
+
+                            <div class="instr">
+                                <h4>BREAK BETWEEN SESSIONS</h4>
+                            </div>
+
+                            <div id="ses-break">
+                                <button class="minus button-style">-</button><span class="num">5</span>
+                                <button class="button-style plus">+</button>
+                            </div>
+                        </div>
+
+                        <div class="control-container">
+
+                            <div class="instr">
+                                <h4>BREAK BETWEEN SETS</h4>
+                            </div>
+
+                            <div id="set-break">
+                                <button class="minus button-style">-</button><span class="num">20</span>
+                                <button class="plus button-style">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sound-control">
+                    <div id="sound"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
