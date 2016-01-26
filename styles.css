@@ -1,0 +1,221 @@
+html,
+body {
+  margin: 0;
+  height: 100%;
+  color: black !important;
+}
+
+#details {
+  font-size: 15px;
+  line-height: 24px;
+}
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  color: #606060;
+  min-width: 761px;
+  background: url("http://i358.photobucket.com/albums/oo27/picturesqueworlds/mesh-texture-17101_zpsmxduqgvw.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.container {
+  margin: 0 auto;
+  border-radius: 20px;
+  box-shadow: 0px 1px 7px 2px rgba(0, 0, 0, 1);
+  text-align: center;
+  background: #ededed;
+}
+
+h1 {
+  display: inline;
+  font-size: 75px;
+  color: #777777;
+  text-shadow: 0px 0px 0px #E8E8E8, 0px -1px 0px white, 1px 1px 1px white, 4px 1px 1px #777777, 0px 0px 1px white, 1px 0px 1px white, 4px 0px 0px rgba(172, 172, 172, 0.5), 4px -3px 0px rgb(247, 247, 247), 4px -1px 1px rgb(247, 247, 247), 0px -3px 0px rgb(247, 247, 247), 3px 0px 9px rgba(0, 0, 0, 0.5), 6px 0px 9px black, 6px 0px 1px black, 4px -4px 1px black;
+}
+
+.title-class {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.inner-div {
+  width: 100px;
+  height: 115px;
+  margin: 0 auto;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.level {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding-top: 5px;
+  max-width: 720px;
+  min-width: 240px;
+  margin: 0 auto;
+}
+
+.level .level-button {
+  display: inline-block;
+  height: 80px;
+  outline: none;
+  width: 140px;
+  padding: 5px 5px;
+  vertical-align: top;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.level .level-button .name {
+  font-size: 21px;
+}
+
+.button-style {
+  outline: none;
+  text-align: center;
+  border-radius: 20px;
+  position: relative;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff, 0px -4px 5px -3px rgba(0, 0, 0, 0.75), 0px 0px 6px 0px rgba(0, 0, 0, 0.75), 0px 4px 5px -3px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: inset 0px 1px 0px 0px #ffffff, 0px -4px 5px -3px rgba(0, 0, 0, 0.75), 0px 0px 6px 0px rgba(0, 0, 0, 0.75), 0px 4px 5px -3px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 0px 1px 0px 0px #ffffff, 0px -4px 5px -3px rgba(0, 0, 0, 0.75), 0px 0px 6px 0px rgba(0, 0, 0, 0.75), 0px 4px 5px -3px rgba(0, 0, 0, 0.75);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf));
+  background: -moz-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+  background: -webkit-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+  background: -o-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+  background: -ms-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+  background: linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+  filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf', GradientType=0);
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  border: 1px solid #dcdcdc;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 6px 6px;
+  text-decoration: none;
+  color: black;
+}
+
+.button-style:hover {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed));
+  background: -moz-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
+  background: -webkit-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
+  background: -o-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
+  background: -ms-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
+  background: linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+  filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed', GradientType=0);
+}
+
+.button-style:active {
+  position: relative;
+  top: 1px;
+  -webkit-box-shadow: inset -1px 1px 7px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: inset -1px 1px 7px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 0px 1px 0px 0px #8f8c8f, 0px -1px 2px -3px rgba(0, 0, 0, 0.75), 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
+  border: 1px solid #8f8c8f;
+}
+
+.control-div {
+  text-align: center;
+  margin: 0 auto;
+  padding-bottom: 10px;
+}
+
+.control-div-section {
+  display: inline-block;
+  vertical-align: top;
+  width: 240px;
+}
+
+.control-container button {
+  width: 40px;
+  height: 40px;
+  display: inline;
+  vertical-align: bottom;
+  font-size: 30px;
+  line-height: 20px;
+  text-align: center;
+}
+
+.minus {
+  font-size: 34px !important;
+}
+
+.control-container .instr {
+  padding-top: 8px;
+}
+
+#ses-length,
+#num-sets,
+#ses-break,
+#set-break {
+  margin-top: -20px;
+}
+
+.control-container .num {
+  line-height: 33px;
+  text-align: center;
+  width: 30px;
+  padding-right: 10px;
+  padding-left: 8px;
+  display: inline-block;
+  margin-left: 0;
+  margin-right: -4px;
+  font-size: 20px;
+}
+
+.all-content {
+  margin: auto;
+}
+
+.outer-container {
+  display: flex;
+  justify-content: space-around;
+  height: 100%;
+}
+
+#timer-text {
+  cursor: pointer;
+}
+
+#sound {
+  display: inline;
+  cursor: pointer;
+  position: absolute;
+  font-family: FontAwesome;
+  font-size: 20px;
+}
+
+#sound::after {
+  content: '\f028';
+}
+
+#sound.mute::after {
+  content: '\f026';
+}
+
+.sound-control {
+  position: relative;
+  height: 30px;
+  text-align: right;
+  padding-right: 35px;
+}
+
+.colorful {
+  background: linear-gradient(to bottom, red 5%, yellow 100%);
+  filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf', GradientType=0);
+  background-color: #ededed;
+}
