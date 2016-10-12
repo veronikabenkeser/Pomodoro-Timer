@@ -1,15 +1,30 @@
+
 (function() {
   var worker;
   var myTimer;
   var audioObj;
   var timerOff = true;
-  var breakSound = "http://oringz.com/oringz-uploads/sounds-1060-demonstrative.mp3";
-  var workSound = "http://oringz.com/oringz-uploads/sounds-942-what-friends-are-for.mp3";
-  var doneSound = "http://oringz.com/oringz-uploads/44_loving_you.mp3";
+  var breakSound = "http://clipart.usscouts.org/ScoutDoc/SeaExplr/WavFiles/SHIPBELL/CHIME1.WAV";
+  var workSound = "http://www.gravomaster.com/alarm/sounds/ding.mp3";
+  var doneSound = "http://www.gravomaster.com/alarm/sounds/ding.mp3";
+  
+   if (window.Worker) {
+  fetch("http://codepen.io/veronikabenkeser/pen/dYoBow.js")
+  .then(response => response.blob())
+  .then(script => {
+    console.log(script);
+    var url = URL.createObjectURL(script);
+    worker = new Worker(url);
+        
+      //Responding to the message sent back from the worker
+      worker.onmessage = function(e) {};
+      go();
+    });
+   }
 
-  $(document).ready(function() {
+function go(){
+ 
     $("#timer-text #words").text("START");
-
     //Create a sound object
     audioObj = new Audio();
     audioObj.muted = false;
@@ -24,8 +39,6 @@
     $("#timer-text").hover(function() {
       if (timerOff) {
         addColor();
-        /*$(".container").addClass('colorful');
-        $("h1").css('color', 'red');*/
       }
     }, function() {
       if (timerOff) {
@@ -48,7 +61,6 @@
         resetScreen();
       }
     });
-
     //Add or substract 1 in the controls container
     $(".control-container button").click(function() {
       var obj = $(this);
@@ -58,9 +70,9 @@
       if (!timerOff) {
         resetScreen();
       }
-    });
   });
-
+}
+                   
   function updateControls(id) {
     var contrMap = {
       student: 2,
@@ -113,13 +125,7 @@
     myTimer = new CountDownTimer(sessions.length, sessions);
 
     //If the browser suppors the Worker API, create a new Web Worker to count time when the tab is not active.
-    if (window.Worker) {
-      worker = new Worker("http://s.codepen.io/veronikabenkeser/pen/dYoBow.js");
-      //Responding to the message sent back from the worker
-      worker.onmessage = function(e) {};
-
-    }
-
+  
     //Start timer
     myTimer.countSessions(sessions).then(function(data) {
       console.log("complete:", data)
@@ -133,6 +139,7 @@
     var sessionsArr = sessions;
     this.countSessions = function(session) {
 
+     
       function continueCounting() {
         var sessionName;
 
@@ -162,6 +169,7 @@
     }
 
     this.countSeconds = function(session, sessionName) {
+      
       var minutes;
       var seconds;
       var secsLeft;
@@ -169,13 +177,16 @@
       var angle = 0;
 
       return new Promise(function(resolve) {
+        
+        
         secsLeft = session + 1;
+      console.log(typeof worker == "undefined");
         worker.postMessage("start-session");
 
         //Respond to the message sent back from the worker
         worker.onmessage = function(e) {
           //On each post message from the worker, get the current system time and compare it to the expected elapsed time of a second
-
+        
           secsLeft -= 1;
           minutes = Math.floor(secsLeft / 60);
           seconds = secsLeft % 60;
@@ -189,17 +200,15 @@
             resolve({
               count: count
             })
-          }
-
+          }          
         }
-      });
-    };
+     });  
+   };
 
     this.displayTimeOrMessage = function(sessionName, minsLeft, secsLeft) {
 
       if (secsLeft === -1) {
-
-        /* if (!$("#sound").hasClass('mute')) {*/
+        
         if (sessionName === "Work!") {
 
           //Play sound
@@ -278,4 +287,5 @@
     $("#timer-text tspan").empty();
     $("#timer-text #words").text("START");
   }
+ 
 })();
