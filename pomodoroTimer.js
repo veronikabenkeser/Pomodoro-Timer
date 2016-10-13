@@ -6,7 +6,7 @@
   var timerOff = true;
   var breakSound = "http://clipart.usscouts.org/ScoutDoc/SeaExplr/WavFiles/SHIPBELL/CHIME1.WAV";
   var workSound = "http://www.gravomaster.com/alarm/sounds/ding.mp3";
-  var doneSound = "http://www.gravomaster.com/alarm/sounds/ding.mp3";
+  var doneSound = "http://www.gravomaster.com/alarm/sounds/beng_gong.mp3";
   
    if (window.Worker) {
   fetch("http://codepen.io/veronikabenkeser/pen/dYoBow.js")
