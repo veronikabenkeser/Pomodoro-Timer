@@ -1,38 +1,42 @@
-
 (function() {
   var worker;
   var myTimer;
-  var audioObj;
   var timerOff = true;
-  var breakSound = "http://clipart.usscouts.org/ScoutDoc/SeaExplr/WavFiles/SHIPBELL/CHIME1.WAV";
-  var workSound = "http://www.gravomaster.com/alarm/sounds/ding.mp3";
-  var doneSound = "http://www.gravomaster.com/alarm/sounds/beng_gong.mp3";
-  
-   if (window.Worker) {
-  fetch("http://codepen.io/veronikabenkeser/pen/dYoBow.js")
-  .then(response => response.blob())
-  .then(script => {
-    console.log(script);
-    var url = URL.createObjectURL(script);
-    worker = new Worker(url);
-        
-      //Responding to the message sent back from the worker
-      worker.onmessage = function(e) {};
-      go();
-    });
-   }
+  var workSound = document.getElementById('workAudio');
+  var breakSound = document.getElementById('breakAudio');
+  var doneSound = document.getElementById('doneAudio');
 
-function go(){
- 
+  if (window.Worker) {
+    fetch("http://codepen.io/veronikabenkeser/pen/dYoBow.js")
+      .then(response => response.blob())
+      .then(script => {
+        console.log(script);
+        var url = URL.createObjectURL(script);
+        worker = new Worker(url);
+
+        //Responding to the message sent back from the worker
+        worker.onmessage = function(e) {};
+        go();
+      });
+  }
+
+  function go() {
+
     $("#timer-text #words").text("START");
-    //Create a sound object
-    audioObj = new Audio();
-    audioObj.muted = false;
 
     //Manipulate sound through the sound icon
     $("#sound").click(function() {
       $(this).toggleClass('mute');
-      audioObj.muted ? audioObj.muted = false : audioObj.muted = true;
+
+      if ($(this).hasClass('mute')) {
+        $('body audio').each(function() {
+          $(this).prop('muted', true);
+        });
+      } else {
+        $('body audio').each(function() {
+          $(this).prop('muted', false);
+        });
+      }
     });
 
     //Start button on hover
@@ -70,9 +74,9 @@ function go(){
       if (!timerOff) {
         resetScreen();
       }
-  });
-}
-                   
+    });
+  }
+
   function updateControls(id) {
     var contrMap = {
       student: 2,
@@ -80,8 +84,11 @@ function go(){
       expert: 10,
       jedi: 14
     };
-    var newVal = contrMap[id];
-    $("#num-sets").find($(".num")).text(newVal);
+    var numSets = contrMap[id];
+    var sesLength = 25;
+    $("#num-sets").find($(".num")).text(numSets);
+    $("#ses-length").find($(".num")).text(sesLength);
+
   }
 
   function modifyOption(buttonClass, section) {
@@ -125,7 +132,7 @@ function go(){
     myTimer = new CountDownTimer(sessions.length, sessions);
 
     //If the browser suppors the Worker API, create a new Web Worker to count time when the tab is not active.
-  
+
     //Start timer
     myTimer.countSessions(sessions).then(function(data) {
       console.log("complete:", data)
@@ -139,7 +146,6 @@ function go(){
     var sessionsArr = sessions;
     this.countSessions = function(session) {
 
-     
       function continueCounting() {
         var sessionName;
 
@@ -169,7 +175,7 @@ function go(){
     }
 
     this.countSeconds = function(session, sessionName) {
-      
+
       var minutes;
       var seconds;
       var secsLeft;
@@ -177,16 +183,15 @@ function go(){
       var angle = 0;
 
       return new Promise(function(resolve) {
-        
-        
+
         secsLeft = session + 1;
-      console.log(typeof worker == "undefined");
+        console.log(typeof worker == "undefined");
         worker.postMessage("start-session");
 
         //Respond to the message sent back from the worker
         worker.onmessage = function(e) {
           //On each post message from the worker, get the current system time and compare it to the expected elapsed time of a second
-        
+
           secsLeft -= 1;
           minutes = Math.floor(secsLeft / 60);
           seconds = secsLeft % 60;
@@ -200,29 +205,25 @@ function go(){
             resolve({
               count: count
             })
-          }          
+          }
+
         }
-     });  
-   };
+      });
+
+    };
 
     this.displayTimeOrMessage = function(sessionName, minsLeft, secsLeft) {
 
       if (secsLeft === -1) {
-        
+
         if (sessionName === "Work!") {
-
-          //Play sound
-          audioObj.src = workSound;
-          audioObj.play();
+          workSound.play();
         } else if (sessionName === "Break!") {
-
-          audioObj.src = breakSound;
-          audioObj.play();
+          breakSound.play();
         } else {
-          audioObj.src = doneSound;
-          audioObj.play();
+          doneSound.play();
         }
-        /*}*/
+
         $("#timer-text tspan").empty();
         $("#timer-text #words").text(sessionName);
 
@@ -287,5 +288,5 @@ function go(){
     $("#timer-text tspan").empty();
     $("#timer-text #words").text("START");
   }
- 
+
 })();
